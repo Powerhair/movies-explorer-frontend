@@ -1,0 +1,31 @@
+.portfolio {
+  padding: 0 70px 125px;
+  background-color: var(--milk);
+  @media screen and (max-width: 768px) {
+    padding: 0 50px 73px;
+  }
+  @media screen and (max-width: 495px) {
+    padding: 0 14px 54px;
+  }
+}
+
+.portfolio__title {
+  color: var(--grey-dark);
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  @media screen and (max-width: 495px) {
+    font-size: 14px;
+  }
+}
+
+.portfolio__list {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  @media screen and (max-width: 495px) {
+    margin-top: 20px;
+  }
+}
