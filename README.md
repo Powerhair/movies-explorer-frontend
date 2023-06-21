@@ -33,5 +33,5 @@
 ## Дополнительные материалы
 
 - [Ссылка на макет в Figma](<https://www.figma.com/file/X0qIsnZllD98Q1I0AFtfSq/Diploma-(Copy)-(Copy)?type=design&node-id=891-3857>)
-- [Ссылка на пул реквест](https://github.com/Powerhair/movies-explorer-frontend/pull/4)
+- [Ссылка на пул реквест](https://github.com/Powerhair/movies-explorer-frontend/pull/1)
 - [Проект](http://diploma.nomoredomains.monster)
