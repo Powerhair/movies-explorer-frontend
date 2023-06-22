@@ -15,17 +15,9 @@ function SearchForm({ props, pageSavedMovie }) {
     handleFilteredMovies,
     handleCheckboxFiltered,
     movies,
+    isOn,
+    setIsOn,
   } = props;
-
-  const [isOn, setIsOn] = useState(checkbox);
-
-  // useEffect(() => {
-  //   const formValue = localStorage.getItem("formValue");
-
-  //   if (formValue && !pageSavedMovie) {
-  //     setFormValue(JSON.parse(formValue));
-  //   }
-  // }, []);
 
   useEffect(() => {
     const formValue = localStorage.getItem("formValue");

@@ -38,6 +38,7 @@ function MainBlocks({
   const [isFormValue, setIsFormValue] = useState("");
   const [isErrorSearchSavedMoviesPage, setIsErrorSearchSavedMoviesPage] =
     useState("");
+  const [isOn, setIsOn] = useState(isCheckbox);
 
   const [isCheckboxSave, setIsCheckboxSave] = useState(false);
 
@@ -88,18 +89,33 @@ function MainBlocks({
     }
   }
 
+  // function handleShowAllMovies() {
+  //   setIsFilteredAllMovies(isMovies);
+  //   localStorage.removeItem("filteredMovies");
+  //   localStorage.removeItem("formValue");
+  //   localStorage.removeItem("checkbox");
+  //   localStorage.setItem("allMovies", JSON.stringify(isMovies));
+  //   window.scrollTo(0, 0);
+  //   setIsFiltered(true);
+  //   setIsFormValue("");
+  //   setIsErrorSearchFormSpan("");
+  //   setIsActiveShowAllMovies(false);
+  //   setIsCheckbox(false);
+  // }
+
   function handleShowAllMovies() {
     setIsFilteredAllMovies(isMovies);
     localStorage.removeItem("filteredMovies");
     localStorage.removeItem("formValue");
     localStorage.removeItem("checkbox");
     localStorage.setItem("allMovies", JSON.stringify(isMovies));
-    window.scrollTo(0, 0);
     setIsFiltered(true);
     setIsFormValue("");
     setIsErrorSearchFormSpan("");
     setIsActiveShowAllMovies(false);
-    setIsCheckbox(false);
+    setIsCheckbox(false); // добавили эту строку
+    window.scrollTo(0, 0);
+    setIsOn(false);
   }
 
   function handleCheckboxFiltered(isCheckbox) {
@@ -234,6 +250,8 @@ function MainBlocks({
                 formValue={isFormValue}
                 setFormValue={setIsFormValue}
                 handleShowAllMovies={handleShowAllMovies}
+                isOn={isOn}
+                setIsOn={setIsOn}
               />
             }
           />
@@ -256,6 +274,8 @@ function MainBlocks({
                 checkbox={isCheckboxSave}
                 handleDeleteMovies={handleDeleteMovies}
                 errorSpan={isErrorSearchSavedMoviesPage}
+                isOn={isOn}
+                setIsOn={setIsOn}
               />
             }
           />
