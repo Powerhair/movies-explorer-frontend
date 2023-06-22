@@ -17,13 +17,26 @@ function SearchForm({ props, pageSavedMovie }) {
     movies,
   } = props;
 
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(checkbox);
+
+  // useEffect(() => {
+  //   const formValue = localStorage.getItem("formValue");
+
+  //   if (formValue && !pageSavedMovie) {
+  //     setFormValue(JSON.parse(formValue));
+  //   }
+  // }, []);
 
   useEffect(() => {
     const formValue = localStorage.getItem("formValue");
-
     if (formValue && !pageSavedMovie) {
       setFormValue(JSON.parse(formValue));
+    }
+
+    const checkboxValue = localStorage.getItem("checkbox");
+    if (checkboxValue && !pageSavedMovie) {
+      setCheckbox(JSON.parse(checkboxValue));
+      setIsOn(JSON.parse(checkboxValue));
     }
   }, []);
 
@@ -41,15 +54,15 @@ function SearchForm({ props, pageSavedMovie }) {
   }
 
   function handleCheckboxChange() {
-    setIsOn(!isOn);
     const newCheckboxValue = !checkbox;
-
     setCheckbox(newCheckboxValue);
-    handleCheckboxFiltered(newCheckboxValue);
+    handleCheckboxFiltered(!checkbox);
 
     if (isFiltered && !pageSavedMovie) {
       localStorage.setItem("checkbox", JSON.stringify(newCheckboxValue));
     }
+
+    setIsOn(newCheckboxValue);
   }
 
   function handelSortSubmit(e) {
