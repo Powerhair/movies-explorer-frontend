@@ -8,6 +8,13 @@ export const AppRoute = {
   PageNotFound: "*",
 };
 
+const sizeA = 377;
+const sizeB = 898;
+const sizeC = 897;
+const countA = 5;
+const countB = 8;
+const countC = 12;
+
 export const errorText =
   "Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз";
 

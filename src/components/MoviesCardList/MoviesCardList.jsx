@@ -2,6 +2,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import "./MoviesCardList.scss";
 import { useEffect, useState } from "react";
 import MoviesEmpty from "../MoviesEmpty/MoviesEmpty";
+import { sizeA, sizeB, sizeC, countA, countB, countC } from "../../constants";
 
 function MoviesCardList({ props, pageSavedMovie }) {
   const {
@@ -44,18 +45,18 @@ function MoviesCardList({ props, pageSavedMovie }) {
 
   const handleChangeWidthScreen = () => {
     const width = window.innerWidth;
-    if (width < 377) {
-      setCountCard(5);
-    } else if (width < 898) {
-      setCountCard(8);
+    if (width < sizeA) {
+      setCountCard(countA);
+    } else if (width < sizeB) {
+      setCountCard(countB);
     } else {
-      setCountCard(12);
+      setCountCard(countC);
     }
   };
 
   const handleMoreFilmsShow = () => {
     if (movies.length !== 0) {
-      if (window.innerWidth > 897) setCountCard(countCard + 3);
+      if (window.innerWidth > sizeC) setCountCard(countCard + 3);
       else {
         setCountCard(countCard + 2);
       }
