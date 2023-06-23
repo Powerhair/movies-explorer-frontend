@@ -167,6 +167,8 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  // console.log("isMovies", isMovies);
+
   useEffect(() => {
     if (isLoggedIn) {
       setIsLoading(true);

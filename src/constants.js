@@ -16,10 +16,6 @@ export const meDescription = "Фронтенд-разработчик, 29 лет
 export const meInformation =
   "Привет! Я родился в Приморском крае, но живу недавно в Санкт-Петербурге. Люблю путешествия, активный спорт, постояно изучать что-то новое. Фронтенд изучаю недавно, дается тяжело, но очень интересно.";
 export const gitLinkRepo = "https://github.com/Powerhair?tab=repositories";
-// export const linkHowtoLearn = "https://github.com/Powerhair/how-to-learn";
-// export const linkRussianTravel = "https://github.com/Powerhair/russian-travel";
-// export const linkMesto =
-//   "https://github.com/Powerhair/react-mesto-api-full-gha";
 
 export const link = {
   linkHowtoLearn: "https://github.com/Powerhair/how-to-learn",

@@ -15,6 +15,8 @@ function MoviesCardList({ props, pageSavedMovie }) {
     movies,
   } = props;
 
+  console.log("movies", movies);
+
   const [countCard, setCountCard] = useState(12);
 
   const buttonAllMovies = pageSavedMovie

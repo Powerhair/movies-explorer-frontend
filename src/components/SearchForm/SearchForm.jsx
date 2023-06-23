@@ -15,27 +15,26 @@ function SearchForm({ props, pageSavedMovie }) {
     handleFilteredMovies,
     handleCheckboxFiltered,
     movies,
-    isOn,
-    setIsOn,
   } = props;
+
+  const checkboxValue = localStorage.getItem("checkbox");
+  const savedCheckboxValue = localStorage.getItem("savedCheckbox");
+
+  const switchChange = `switcher ${checkbox && "on"}`;
 
   useEffect(() => {
     const formValue = localStorage.getItem("formValue");
     if (formValue && !pageSavedMovie) {
       setFormValue(JSON.parse(formValue));
     }
-
-    const checkboxValue = localStorage.getItem("checkbox");
-    if (checkboxValue && !pageSavedMovie) {
-      setCheckbox(JSON.parse(checkboxValue));
-      setIsOn(JSON.parse(checkboxValue));
-    }
   }, []);
 
   useEffect(() => {
-    const checkboxValue = localStorage.getItem("checkbox");
-
     if (checkboxValue && !pageSavedMovie) {
+      setCheckbox(JSON.parse(checkboxValue));
+    }
+
+    if (savedCheckboxValue && !pageSavedMovie) {
       setCheckbox(JSON.parse(checkboxValue));
     }
   }, []);
@@ -47,14 +46,16 @@ function SearchForm({ props, pageSavedMovie }) {
 
   function handleCheckboxChange() {
     const newCheckboxValue = !checkbox;
-    setCheckbox(newCheckboxValue);
-    handleCheckboxFiltered(!checkbox);
 
     if (isFiltered && !pageSavedMovie) {
+      setCheckbox(newCheckboxValue);
+      handleCheckboxFiltered(!checkbox);
       localStorage.setItem("checkbox", JSON.stringify(newCheckboxValue));
+    } else if (pageSavedMovie && isFiltered) {
+      setCheckbox(newCheckboxValue);
+      handleCheckboxFiltered(newCheckboxValue);
+      localStorage.setItem("savedCheckbox", JSON.stringify(newCheckboxValue));
     }
-
-    setIsOn(newCheckboxValue);
   }
 
   function handelSortSubmit(e) {
@@ -105,7 +106,7 @@ function SearchForm({ props, pageSavedMovie }) {
       </form>
       <label className="search-form__checkbox">
         <button
-          className={`switcher ${isOn ? "on" : ""}`}
+          className={switchChange}
           onClick={handleCheckboxChange}
           type="button"
           disabled={movies ? null : true}

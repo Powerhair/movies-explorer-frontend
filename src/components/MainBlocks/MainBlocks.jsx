@@ -38,7 +38,6 @@ function MainBlocks({
   const [isFormValue, setIsFormValue] = useState("");
   const [isErrorSearchSavedMoviesPage, setIsErrorSearchSavedMoviesPage] =
     useState("");
-  const [isOn, setIsOn] = useState(isCheckbox);
 
   const [isCheckboxSave, setIsCheckboxSave] = useState(false);
 
@@ -48,7 +47,6 @@ function MainBlocks({
   const [isCheckboxSavePage, setIsCheckboxSavePage] = useState(false);
 
   const navigate = useNavigate();
-
   function signOut() {
     resetLoggedAndUser();
     navigate(AppRoute.Login);
@@ -115,7 +113,6 @@ function MainBlocks({
     setIsActiveShowAllMovies(false);
     setIsCheckbox(false); // добавили эту строку
     window.scrollTo(0, 0);
-    setIsOn(false);
   }
 
   function handleCheckboxFiltered(isCheckbox) {
@@ -169,8 +166,9 @@ function MainBlocks({
       setIsFilteredAllMovies(allMovies);
     } else {
       setIsFilteredAllMovies({});
+      handleShowAllMovies();
     }
-  }, []);
+  }, [isLoggedIn]);
 
   function handleFilterSaveMovies(inputSearch) {
     setIsValue(inputSearch);
@@ -189,6 +187,8 @@ function MainBlocks({
     }
     setIsFilteredMovies(filteredMovies);
   }, [isSavedMovies, isValue, isCheckboxSavePage]);
+
+  console.log("isFilteredAllMovies", isFilteredAllMovies);
 
   return (
     <div className="page">
@@ -250,8 +250,6 @@ function MainBlocks({
                 formValue={isFormValue}
                 setFormValue={setIsFormValue}
                 handleShowAllMovies={handleShowAllMovies}
-                isOn={isOn}
-                setIsOn={setIsOn}
               />
             }
           />
@@ -266,6 +264,7 @@ function MainBlocks({
                 isLoggedIn={isLoggedIn}
                 setCheckbox={setIsCheckboxSave}
                 movies={isFilteredMovies}
+                isFiltered={isFiltered}
                 handleFilteredMovies={handleFilterSaveMovies}
                 handleCheckboxFiltered={handleCheckboxFilteredSaveMovies}
                 onOpenBurgerPopup={handleOpenBurgerPopup}
@@ -274,8 +273,6 @@ function MainBlocks({
                 checkbox={isCheckboxSave}
                 handleDeleteMovies={handleDeleteMovies}
                 errorSpan={isErrorSearchSavedMoviesPage}
-                isOn={isOn}
-                setIsOn={setIsOn}
               />
             }
           />

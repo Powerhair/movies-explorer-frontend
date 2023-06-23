@@ -4,21 +4,9 @@ import "./SavedMovies.scss";
 import Preloader from "../Preloader/Preloader";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
-import { useEffect } from "react";
 
 function SavedMovies(props) {
   const { onOpenBurgerPopup, isLoading } = props;
-
-  // деструктурируем props и получаем необходимые значения
-  const { setIsOn } = props;
-
-  useEffect(() => {
-    // устанавливаем значение по умолчанию только при первом открытии страницы
-    if (localStorage.getItem("checkbox")) {
-      setIsOn(false);
-    }
-  }, []);
-
   return (
     <>
       <Header
